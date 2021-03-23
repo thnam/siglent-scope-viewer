@@ -19,8 +19,9 @@ if mkdir $LOCKDIR; then
    echo "Acquired lock, running"
 
    while true ; do
+      echo -n $(date) ", "
       lxi screenshot --address $IP --plugin siglent-sds scope.png
-      sleep 0.5
+      sleep 0.9
    done
 else
    echo "Could not create lock directory '$LOCKDIR', is another instance of"
