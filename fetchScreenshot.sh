@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 LOCKDIR=/tmp/fetchScreenshot.quad.lock
-IP="192.168.1.119"
+IP="192.168.30.82"
 
 #Remove the lock directory
 function cleanup {

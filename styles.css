@@ -10,7 +10,7 @@
    position: absolute;
    z-index: 999;
    margin: 0 auto;
-   left: 7%;
+   left: 17%;
    right: 0;
    top: 0; /* Adjust this value to move the positioned div up and down */
    text-align: center;
