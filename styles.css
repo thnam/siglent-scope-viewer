@@ -1,0 +1,18 @@
+#timestamp {
+   color: palegreen;
+   font-size: large;
+}
+.box{
+   position: relative;
+   display: inline-block; /* Make the width of box same as image */
+}
+.box .text{
+   position: absolute;
+   z-index: 999;
+   margin: 0 auto;
+   left: 7%;
+   right: 0;
+   top: 0; /* Adjust this value to move the positioned div up and down */
+   text-align: center;
+   width: 80%; /* Set the width of the positioned div */
+}
