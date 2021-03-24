@@ -5,6 +5,7 @@ IP="192.168.1.119"
 #Remove the lock directory
 function cleanup {
    if rm -rf $LOCKDIR; then
+      rm -f nohup.out
       echo "Finished"
    else
       echo "Failed to remove lock directory '$LOCKDIR'"
