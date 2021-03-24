@@ -38,6 +38,7 @@ def takeScreenshot():
             sds.write("SCDP")
             result_str = sds.read_raw()
 
+            # the result is in bitmap format, want to convert to png
             tempBuff = BytesIO()
             tempBuff.write(result_str)
             tempBuff.seek(0)
@@ -66,7 +67,7 @@ def main():
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(allow_abbrev=False, add_help=False,
-            description='Capture screenshot from a Siglent SDS scope')
+            description='Fetch screenshot from a Siglent SDS scope')
     required = parser.add_argument_group('Required arguments')
     optional = parser.add_argument_group('Optional arguments')
 
