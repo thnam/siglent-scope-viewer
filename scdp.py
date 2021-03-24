@@ -64,15 +64,21 @@ def main():
         exit(-1)
 
 if __name__ == '__main__':
-    parser = argparse.ArgumentParser(allow_abbrev=False,
+    parser = argparse.ArgumentParser(allow_abbrev=False, add_help=False,
             description='Capture screenshot from a Siglent SDS scope')
-    parser.add_argument('--ip', dest='ip', action='store',
-            required=True, help='IP address of the scope')
-    parser.add_argument('-o', '--ouput', action='store', dest='output',
+    required = parser.add_argument_group('Required arguments')
+    optional = parser.add_argument_group('Optional arguments')
+
+    required.add_argument('--ip', dest='ip', action='store', required=True,
+            help='IP address of the scope')
+
+    optional.add_argument('-h', '--help', action='help',
+            default=argparse.SUPPRESS, help='show this help message and exit')
+    optional.add_argument('-o', '--ouput', action='store', dest='output',
             help='output file name', default='scope.png')
-    parser.add_argument('--interval', dest='interval', action='store',
+    optional.add_argument('--interval', dest='interval', action='store',
             default=1.0, help='interval between screenshots', type=float)
-    parser.add_argument('--lock', dest='lock', action='store',
+    optional.add_argument('--lock', dest='lock', action='store',
             help='lock file', default='/tmp/scdp.quad.lock')
     args = parser.parse_args()
 
