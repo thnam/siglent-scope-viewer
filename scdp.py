@@ -46,7 +46,8 @@ def takeScreenshot():
             image.save(output)
 
             utc_dt = datetime.now(timezone.utc)
-            print("{} - screenshot captured.".format(utc_dt.astimezone().isoformat()))
+            print("{} - screenshot captured.".format(utc_dt.astimezone().isoformat()),
+                    flush=True)
             sleep(interval)
     except pyvisa.errors.VisaIOError:
         print('Could not connect to device, is the IP address correct?',

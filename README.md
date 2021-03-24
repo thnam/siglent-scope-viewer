@@ -9,6 +9,15 @@ Tested working on:
 
 Usage:
 ```bash
+# run the script in the background, SIGTERM is handled gracefully
+nohup ./scdp.py --ip the_scope_s_ip_address &
+
+# or foreground
+./scdp.py --ip the_scope_s_ip_address
+```
+
+Options accepted by the python script:
+```
 usage: scdp.py --ip IP [-h] [-o OUTPUT] [--interval INTERVAL] [--lock LOCK]
 
 Capture screenshot from a Siglent SDS scope
