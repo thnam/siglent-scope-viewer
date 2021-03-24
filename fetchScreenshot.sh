@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 LOCKDIR=/tmp/fetchScreenshot.quad.lock
-IP="192.168.30.82"
+IP="192.168.1.119"
 
 #Remove the lock directory
 function cleanup {
@@ -19,8 +19,7 @@ if mkdir $LOCKDIR; then
    echo "Acquired lock, running"
 
    while true ; do
-      echo -n $(date) ", "
-      lxi screenshot --address $IP --plugin siglent-sds scope.png
+      ./scdp.py --ip $IP
       sleep 0.9
    done
 else
