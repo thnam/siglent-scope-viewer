@@ -27,7 +27,7 @@ killer = GracefulKiller()
 
 def takeScreenshot():
     try:
-        rm = pyvisa.ResourceManager()
+        rm = pyvisa.ResourceManager('@py')
         sds = rm.open_resource(f"TCPIP::{ip}::INSTR")
 
         sds.chunk_size = 2*1024*1024 
