@@ -1,0 +1,16 @@
+# example of a systemd service, change path and ip to suitable values
+[Unit]
+Description=The quad scope screenshot fetcher
+After=network.target
+StartLimitIntervalSec=0
+
+[Service]
+Type=simple
+Restart=always
+RestartSec=30
+User=nam
+WorkingDirectory=/path/to/the/desired/directory
+ExecStart=/path/to/the/desired/directory/fetchScreenshot.py --ip scope_ip_address
+
+[Install]
+WantedBy=multi-user.target
