@@ -1,16 +1,19 @@
-# example of a systemd service, change path and ip to suitable values
+# example systemd service file, should be copied to ~/.config/systemd/user/example.service
+# then run: 
+# systemctl --user daemon-reload 
+# systemctl --user enable example
+# systemctl --user start example
+
 [Unit]
 Description=The quad scope screenshot fetcher
-After=network.target
 StartLimitIntervalSec=0
 
 [Service]
 Type=simple
 Restart=always
 RestartSec=30
-User=nam
-WorkingDirectory=/path/to/the/desired/directory
-ExecStart=/path/to/the/desired/directory/fetchScreenshot.py --ip scope_ip_address
+WorkingDirectory=/path/to/working/directory
+ExecStart=/path/to/working/directory/fetchScreenshot.py --ip 192.168.1.119
 
 [Install]
-WantedBy=multi-user.target
+WantedBy=default.target
