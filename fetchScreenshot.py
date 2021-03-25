@@ -44,7 +44,8 @@ def takeScreenshot():
             tempBuff.seek(0)
 
             image = Image.open(tempBuff)
-            image.save(output)
+            image.save(f'tmp_{output}')
+            os.rename(f'tmp_{output}', output)
 
             utc_dt = datetime.now(timezone.utc)
             print("{} - screenshot captured.".format(utc_dt.astimezone().isoformat()),
