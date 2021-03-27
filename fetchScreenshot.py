@@ -5,7 +5,7 @@ import argparse
 
 from datetime import datetime, timezone
 from time import sleep
-from PIL import Image
+from PIL import Image, ImageDraw
 from io import BytesIO
 from filelock import Timeout, FileLock
 
@@ -44,6 +44,9 @@ def takeScreenshot():
             tempBuff.seek(0)
 
             image = Image.open(tempBuff)
+            markup = ImageDraw.Draw(image)
+            markup.rectangle([100, -1, 152, 24], fill=None, outline="orange", width=3)
+
             image.save(f'tmp_{output}')
             os.rename(f'tmp_{output}', output)
 
