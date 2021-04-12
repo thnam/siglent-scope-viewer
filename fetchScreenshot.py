@@ -33,7 +33,12 @@ def takeScreenshot():
         sds.chunk_size = 2*1024*1024 
         #default value is 20*1024(20k bytes), and the bitmap size is about 700 KB
         sds.timeout = 3000 #default value is 2000(2s)
+    except pyvisa.errors.VisaIOError:
+        print('Could not connect to device, is the IP address correct?',
+                file=sys.stderr)
+        exit(-1)
 
+    try:
         while not killer.kill_now:
             sds.write("SCDP")
             result_str = sds.read_raw()
@@ -54,11 +59,8 @@ def takeScreenshot():
             print("{} - screenshot captured.".format(utc_dt.astimezone().isoformat()),
                     flush=True)
             sleep(interval)
-    except pyvisa.errors.VisaIOError:
-        print('Could not connect to device, is the IP address correct?',
-                file=sys.stderr)
-        exit(-1)
-    pass
+    except Exception as e:
+        print(e)
 
 def main():
     try:
